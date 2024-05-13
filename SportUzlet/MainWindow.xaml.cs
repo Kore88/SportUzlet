@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SportUzlet.Model;
+using SportUzlet.VeiwModel;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,17 +20,20 @@ namespace SportUzlet
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Szemely> szemelyek = new List<Szemely>();
-        List<Termek> termekek = new List<Termek>();
+        ObservableCollection<Szemely> szemelyek = new ObservableCollection<Szemely>();
+        ObservableCollection<Termek> termekek = new ObservableCollection<Termek>();
+
+        MainPageVeiwModel viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = new MainPageVeiwModel();
+            DataContext = viewModel;
             DataGridFeltoltes();
-            MessageBox.Show(szemelyek[0].Nev);
-            dgRacsSzemelyek.ItemsSource = szemelyek;
-            dgRacsTermekek.ItemsSource = termekek;
         }
+
+
 
         public void DataGridFeltoltes()
         {
@@ -52,6 +57,8 @@ namespace SportUzlet
                     Szemely sz = new Szemely(c,n);
                     szemelyek.Add(sz);
                 }
+                dgRacsSzemelyek.ItemsSource = szemelyek;
+
                 while (dr1.Read())
                 {
                     string tn = dr1.GetString(0);
@@ -60,6 +67,7 @@ namespace SportUzlet
                     Termek tr = new Termek(tn, ea);
                     termekek.Add(tr);
                 }
+                dgRacsTermekek.ItemsSource = termekek;
 
                 conn.Close();
                 conn1.Close();
@@ -68,24 +76,5 @@ namespace SportUzlet
             finally { conn.Close(); }
         }
 
-        private void btnUjSzemely_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSzemelyTorol_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUjTermek_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnTermekTorol_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

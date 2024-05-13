@@ -1,0 +1,56 @@
+﻿<Window x:Class="SportUzlet.Veiw.RemoveSzemelyView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportUzlet.Veiw"
+        mc:Ignorable="d"
+        Title="RemoveSzemelyView" Height="300" Width="250">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Név: "
+               Grid.Column="0"></Label>
+        <TextBlock Text="{Binding TermekNev}"
+                 Grid.Column="1"
+                 Width="80"
+                 Height="25"
+                 VerticalAlignment="Top"></TextBlock>
+
+        <Label Content="Cím: "
+               Grid.Column="0"
+               Margin="0,50,0,0"></Label>
+        <TextBlock Text="{Binding Egysegar}"
+                 Grid.Column="1"
+                 Width="80"
+                 Margin="0,50,0,0"
+                 Height="24"
+                 VerticalAlignment="top"
+                 ></TextBlock>
+
+        <ComboBox x:Name="cbxNevek"
+                  Grid.Column="0"
+                  VerticalAlignment="top"
+                  Margin="0,100,0,0"
+                  Height="24"
+                  Width="80"></ComboBox>
+
+
+
+        <Button Content="Törlés"
+                Grid.Column="0"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,30"
+                HorizontalAlignment="Center"
+                Command="{Binding }"></Button>
+
+        <Button Content="Mégse"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,30"
+                HorizontalAlignment="Center"
+                Command="{Binding MegseCmd}"></Button>
+    </Grid>
+</Window>

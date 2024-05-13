@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportUzlet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sport Üzlet" Height="450" Width="800">
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -21,26 +21,44 @@
         <DataGrid x:Name="dgRacsSzemelyek"
                   Grid.Column="0"
                   Grid.Row="1"
-                  Margin="20"></DataGrid>
+                  Margin="20"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Név"
+                                    Binding="{Binding Nev}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cím"
+                                    Binding="{Binding Cim}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <DataGrid x:Name="dgRacsTermekek"
                   Grid.Column="1"
                   Grid.Row="1"
-                  Margin="20"></DataGrid>
+                  Margin="20"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Név"
+                                    Binding="{Binding TermekNev}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Egységár"
+                                    Binding="{Binding Egysegar}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Button x:Name="btnUjSzemely"
                 Grid.Column="0"
                 Margin="20"
                 Width="100"
                 HorizontalAlignment="Center"
-                Content="Új Személy" Click="btnUjSzemely_Click"></Button>
+                Content="Új Személy" 
+                Command="{Binding AddSzemelyCmd}"></Button>
 
         <Button x:Name="btnUjTermek"
                 Grid.Column="1"
                 Margin="20"
                 Width="100"
                 HorizontalAlignment="Center"
-                Content="Új Termék" Click="btnUjTermek_Click"></Button>
+                Content="Új Termék" 
+                Command="{Binding AddTermekCmd}"></Button>
 
         <Button x:Name="btnSzemelyTorol"
                 Grid.Column="0"
@@ -48,7 +66,8 @@
                 Margin="20"
                 Width="100"
                 HorizontalAlignment="Center"
-                Content="Személy Törlése" Click="btnSzemelyTorol_Click"></Button>
+                Content="Személy Törlése" 
+                Command="{Binding RemoveSzemelyCmd}"></Button>
 
         <Button x:Name="btnTermekTorol"
                 Grid.Column="1"
@@ -56,7 +75,7 @@
                 Margin="20"
                 Width="100"
                 HorizontalAlignment="Center"
-                Content="Termék Törlése" Click="btnTermekTorol_Click"></Button>
+                Content="Termék Törlése"></Button>
 
     </Grid>
 </Window>
